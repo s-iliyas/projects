@@ -1,0 +1,7 @@
+build
+pytest
+setuptools_scm
+httpx
+black==23.3.0 # match what's in pyproject.toml
+hypothesis
+hypothesis[numpy]

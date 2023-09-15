@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  backend:
+    build: .
+    command: "npm start"
+    ports:
+      - 8080:8080
+    volumes:
+      - ./node.conf:/etc/apache2/sites-available/000-default.conf
+      - ./src:/var/www/backend

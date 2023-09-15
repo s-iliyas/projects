@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  frontend:
+      build: frontend
+      container_name: frontend
+      volumes:
+        - ./frontend:/var/www/frontend
+        - ./frontend/frontend.conf:/etc/apache2/sites-available/000-default.conf
+        - ./frontend/frontend.sh:/var/www/frontend.sh
+      ports:
+        - "80:80"
+      command: server

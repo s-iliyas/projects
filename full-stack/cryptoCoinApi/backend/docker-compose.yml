@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  db:
+    image: ubuntu/postgres:14-22.04_edge
+    container_name: db
+    volumes:
+      - ../data/db:/var/lib/postgresql/data:z
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    command: ["postgres", "-c", "log_statement=all","-c","log_directory=pg_log","-c","log_filename=postgresql-%Y-%m-%d_%H%M%S.log","-c","log_rotation_age=1d","-c","logging_collector=on","-c","log_destination=csvlog"]
+
+
+  web:
+    build: .
+    container_name: backend
+    volumes:
+      - ./:/var/www/backend
+      - ./site_config.conf:/etc/apache2/sites-available/000-default.conf
+      - ./start.sh:/var/www/start.sh
+      - ../logs/server:/var/log/apache2:z
+    ports:
+      - '8000:8000'
+    command: server
+    depends_on:
+      - db
+

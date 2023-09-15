@@ -1,0 +1,24 @@
+{% load static %}
+<link href="{% static 'css/bootstrap.min.css' %}" />
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Iliyas</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div>
+      <h1>Iliyas Loves Meraa </h1><p>who is from aceh.</p><h4>Wanna order pizza? I want 
+     <p> 1.extra cheese chicken pizza.</p>
+    <p>2.Satu cium from meraa.</p></h4> 
+    </div>
+    <div><p></p>Signup First</p><a href="https://drf-pizza-api.herokuapp.com/auth/signup/">Signup</a>
+    <p>Go order next using token</p><a href="https://drf-pizza-api.herokuapp.com/orders/">Orders</a></div>
+    <div><p>Check your Order</p><a href="https://drf-pizza-api.herokuapp.com/users/{user_id}/orders">My orders</a></div>
+  </body>
+</html>

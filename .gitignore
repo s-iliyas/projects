@@ -1,0 +1,15 @@
+node_modules
+
+package-lock.json
+
+.env
+
+build
+
+.env.local
+
+.env.prod
+
+dist
+
+env

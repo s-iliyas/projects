@@ -1,0 +1,9 @@
+django
+django-cors-headers
+django-rest-framework
+djoser
+django-phonenumber-field
+django-bootstrap-v5
+drf-yasg
+django-phonenumbers
+whitenoise

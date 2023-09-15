@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+    nginx:
+      build: ./nginx
+      restart: always
+      volumes:
+        - static:/static
+      #   - .:/opt/services/djangoapp/src
+      container_name: nginx
+      ports:
+        - "80:80"
+      depends_on:
+        - django
+        # - angular
+
+    django:
+        build: .
+        restart: always
+        container_name: backend
+        volumes:
+          - static:/static
+        #   - ./config/nginx/conf.d:/etc/nginx/conf.d
+        #   - ./static:/o  # Syncing your current static directory to the Docker
+        command: python manage.py runserver 0.0.0.0:8000
+        ports:
+          - "8000:8000"
+    # angular:
+    #   build: ./frontend
+    #   restart: always
+    #   container_name: frontend
+    #   command: sh -c "npm start"
+    #   volumes:
+    #     - static:/static
+    #   ports:
+    #     - "4200:4200"
+
+volumes:
+  static:
