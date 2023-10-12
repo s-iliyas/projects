@@ -10,7 +10,7 @@ def create_ec2_lb(data):
             aws_secret_access_key=data["aws_secret_access_key"],
             region_name=data["aws_region"],
         )
-        with open("data.json", "r") as f:
+        with open("arns.json", "r") as f:
             arns = json.load(f)
         if not arns["aws_ec2_load_balancer_arn"]:
             # Create a load balancer
@@ -25,7 +25,7 @@ def create_ec2_lb(data):
             arns["aws_ec2_load_balancer_arn"] = elb_response["LoadBalancers"][0][
                 "LoadBalancerArn"
             ]
-            with open("data.json", "w") as f:
+            with open("arns.json", "w") as f:
                 f.write(json.dumps(arns, indent=4))
         # Attach the existing Target Group to the Load Balancer
         elb_client.create_listener(

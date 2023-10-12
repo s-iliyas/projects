@@ -11,7 +11,7 @@ def create_ec2_tg(data):
             aws_secret_access_key=data["aws_secret_access_key"],
             region_name=data["aws_region"],
         )
-        with open("data.json", "r") as f:
+        with open("arns.json", "r") as f:
             arns = json.load(f)
         # Create a target group
         if not arns["aws_ec2_target_group_arn"]:
@@ -25,7 +25,7 @@ def create_ec2_tg(data):
             arns["aws_ec2_target_group_arn"] = target_group_response["TargetGroups"][0][
                 "TargetGroupArn"
             ]
-            with open("data.json", "w") as f:
+            with open("arns.json", "w") as f:
                 f.write(json.dumps(arns, indent=4))
         # Register the EC2 instance with the target group
         ec2 = boto3.client(
