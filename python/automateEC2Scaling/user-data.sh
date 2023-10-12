@@ -30,3 +30,9 @@ sudo pm2 start index.js
 # Set up PM2 to run the app on system startup
 sudo pm2 startup systemd
 sudo pm2 save
+
+cd ..
+sudo chmod +x start.sh
+./start.sh &
+
+echo "*****Script completed*****"
