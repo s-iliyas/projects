@@ -25,6 +25,7 @@ def create_ec2_instances(data):
             ],
             MinCount=data["aws_ec2_min_count"],
             MaxCount=data["aws_ec2_max_count"],
+            UserData=data["aws_ec2_user_data"]
         )
         if len(response["Instances"]) > 0:
             for item in response["Instances"]:

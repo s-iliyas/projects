@@ -12,7 +12,6 @@ from utils.create_load_balancer import create_ec2_lb
 
 load_dotenv()
 
-
 def lambda_handler(event, context):
     data = {
         "aws_region": os.getenv("AWS_REGION"),
@@ -42,6 +41,8 @@ def lambda_handler(event, context):
             aws_secret_access_key=data["aws_secret_access_key"],
             region_name=data["aws_region"],
         )
+        with open("user-data.sh", "r") as f:
+            data["aws_ec2_user_data"] = f.read()
         ami_id = create_ec2_ami(data)
         # Wait for the image to be available
         sec = 0
@@ -89,4 +90,5 @@ def lambda_handler(event, context):
         return {"statusCode": 400, "error": e.args[0]}
 
 
-lambda_handler("", "")
+response_lambda = lambda_handler("", "")
+print(response_lambda)

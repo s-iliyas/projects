@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # make sure this file is executable(chmod +x start.sh)
-# * * * * * /home/iliyas/Desktop/personal/projects/python/automateEC2Scaling/start.sh
+# * * * * * /home/ubuntu/projects/python/automateEC2Scaling/start.sh
 # Define paths and filenames
-PYTHON_SCRIPT_PATH="/home/iliyas/Desktop/personal/projects/python/automateEC2Scaling/dump.py"
-REQUIREMENTS_FILE="/home/iliyas/Desktop/personal/projects/python/automateEC2Scaling/requirements.txt"
-LOG_FILE="/home/iliyas/Desktop/personal/projects/python/automateEC2Scaling/logfile.log"
+PYTHON_SCRIPT_PATH="/home/ubuntu/projects/python/automateEC2Scaling/dump.py"
+REQUIREMENTS_FILE="/home/ubuntu/projects/python/automateEC2Scaling/requirements.txt"
+LOG_FILE="/home/ubuntu/python/automateEC2Scaling/logfile.log"
 
 # Check CPU usage
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d. -f1)

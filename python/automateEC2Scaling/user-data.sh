@@ -24,7 +24,7 @@ cd projects/python/automateEC2Scaling/load-app
 
 # Install app dependencies and start the Node.js app using PM2
 npm install
-sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u iliyas --hp /home/iliyas
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
 sudo pm2 start index.js
 
 # Set up PM2 to run the app on system startup
